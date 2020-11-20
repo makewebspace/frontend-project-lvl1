@@ -1,17 +1,27 @@
+const MIN = {
+  START: 5,
+  LENGTH: 5,
+  DIFF: 2,
+};
+const MAX = {
+  START: 30,
+  LENGTH: 15,
+  DIFF: 10,
+};
 const getProgression = (start, length, diff) => {
   const startArray = new Array(length).fill(start);
   return startArray.map((val, idx) => (val + idx * diff));
 };
 
 function progressionGame(getRandomInt) {
-  const start = getRandomInt(5, 30);
-  const length = getRandomInt(5, 15);
-  const diff = getRandomInt(2, 10);
+  const start = getRandomInt(MIN.START, MAX.START);
+  const length = getRandomInt(MIN.LENGTH, MAX.LENGTH);
+  const diff = getRandomInt(MIN.DIFF, MAX.DIFF);
   const position = getRandomInt(0, length);
   const progression = getProgression(start, length, diff);
   const correct = progression[position].toString();
-  progression[position] = '..';
-  const question = progression.join(' ');
+  const changeForQuestion = (val, idx) => (idx === position ? '..' : val);
+  const question = progression.map(changeForQuestion).join(' ');
   return [question, correct];
 }
 

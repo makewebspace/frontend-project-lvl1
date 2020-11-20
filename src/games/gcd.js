@@ -1,8 +1,10 @@
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 50;
 const gcd = (x, y) => (y > 0 ? gcd(y, x % y) : Math.abs(x));
 
 function gcdGame(getRandomInt) {
-  const first = getRandomInt(0, 50);
-  const second = getRandomInt(0, 50);
+  const first = getRandomInt(MIN_NUMBER, MAX_NUMBER);
+  const second = getRandomInt(MIN_NUMBER, MAX_NUMBER);
   const question = `${first} ${second}`;
   const correct = gcd(first, second).toString();
   return [question, correct];
