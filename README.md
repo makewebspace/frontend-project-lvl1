@@ -22,23 +22,46 @@ make install-local
 ```
 brain-even
 ```
+[![asciicast](https://asciinema.org/a/JbPlMmbPQPZpsDoU0Ssf9V4P7.png)](https://asciinema.org/a/JbPlMmbPQPZpsDoU0Ssf9V4P7?autoplay=1&loop=1)
 
 ### Simple Calculator
 ```
 brain-calc
 ```
+[![asciicast](https://asciinema.org/a/iOrtvfCxMaVVGqyB8WGHDssIP.png)](https://asciinema.org/a/iOrtvfCxMaVVGqyB8WGHDssIP?autoplay=1&loop=1&speed=2)
 
 ### Greatest Common Divisor
 ```
 brain-gcd
 ```
+[![asciicast](https://asciinema.org/a/7oHwblfWwDlL4LW1XrmRjkAvc.png)](https://asciinema.org/a/7oHwblfWwDlL4LW1XrmRjkAvc?autoplay=1&loop=1)
 
 ### Arithmetic Progression
 ```
 brain-progression
 ```
+[![asciicast](https://asciinema.org/a/LXCBmRZ1bLyyIVhb64VM34FVY.png)](https://asciinema.org/a/LXCBmRZ1bLyyIVhb64VM34FVY?autoplay=1&loop=1&speed=2)
 
 ### Is Prime Number
 ```
 brain-prime
+```
+[![asciicast](https://asciinema.org/a/NjWvRcEIvhynhbhzE9DNdH5s6.png)](https://asciinema.org/a/NjWvRcEIvhynhbhzE9DNdH5s6?autoplay=1&loop=1&speed=2)
+
+## Usage on your code
+```javascript
+import gameRunner, { EXIT_CODE } from '@hexlet/code';
+import evenGame from '@hexlet/code/games/even.js';
+
+// You need to specify async getAnswer function,
+// that should return answer by user
+const exitCode = gameRunner(evenGame, getAnswer);
+
+if (exitCode === EXIT_CODE.SUCCESS) {
+  console.log('You won! Congratulations!');
+}
+
+if (exitCode === EXIT_CODE.WRONG) {
+  console.log('You lose! Let\'s try again!');
+}
 ```
