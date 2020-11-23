@@ -1,21 +1,14 @@
 import promptly from 'promptly';
-import gameRunner, { EXIT_CODE } from './index.js';
+import runGame from './index.js';
 
 export default async (game) => {
   console.log('Welcome to the Brain Games!');
 
-  const name = await promptly.prompt('May I have your name? ');
+  const userName = await promptly.prompt('May I have your name? ');
 
-  console.log(`Hello, ${name}!`);
+  console.log(`Hello, ${userName}!`);
 
-  const getAnswer = () => promptly.prompt('Your answer: ');
-  const exitCode = await gameRunner(game, getAnswer);
+  const getAnswerByUser = () => promptly.prompt('Your answer: ');
 
-  if (exitCode === EXIT_CODE.SUCCESS) {
-    console.log(`Congratulations, ${name}!`);
-  }
-
-  if (exitCode === EXIT_CODE.WRONG) {
-    console.log(`Let's try again, ${name}!`);
-  }
+  await runGame(game, userName, getAnswerByUser);
 };

@@ -1,32 +1,29 @@
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
+import { getRandomInt } from './helpers.js';
 
-export const EXIT_CODE = {
-  SUCCESS: 0,
-  WRONG: 1,
-  ERROR: 2,
-};
+const GAME_ROUNDS = 3;
 
-export default async (game, getAnswer) => {
-  if (typeof game !== 'function') {
-    return EXIT_CODE.ERROR;
+export default async (game, userName, getAnswerByUser) => {
+  if (!game) {
+    return;
   }
 
   console.log(game.title);
 
-  for (let i = 0; i < 3; i += 1) {
-    const [question, correctAnswer] = game(getRandomInt);
+  for (let i = 0; i < GAME_ROUNDS; i += 1) {
+    const [question, correctAnswer] = game.getGameRound(getRandomInt);
 
     console.log(`Question: ${question}`);
 
-    const answer = await getAnswer();
+    const answer = await getAnswerByUser();
 
     if (correctAnswer === answer) {
       console.log('Correct!');
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      return EXIT_CODE.WRONG;
+      console.log(`Let's try again, ${userName}!`);
+      return;
     }
   }
 
-  return EXIT_CODE.SUCCESS;
+  console.log(`Congratulations, ${userName}!`);
 };

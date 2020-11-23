@@ -50,18 +50,11 @@ brain-prime
 
 ## Usage on your code
 ```javascript
-import gameRunner, { EXIT_CODE } from '@hexlet/code';
+import runGame from '@hexlet/code';
 import evenGame from '@hexlet/code/games/even.js';
 
-// You need to specify async getAnswer function,
+// You need to specify async getAnswerByUser function,
 // that should return answer by user
-const exitCode = gameRunner(evenGame, getAnswer);
+runGame(evenGame, userName, getAnswerByUser);
 
-if (exitCode === EXIT_CODE.SUCCESS) {
-  console.log('You won! Congratulations!');
-}
-
-if (exitCode === EXIT_CODE.WRONG) {
-  console.log('You lose! Let\'s try again!');
-}
 ```
