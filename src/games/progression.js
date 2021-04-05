@@ -12,20 +12,23 @@ const getProgression = (start, length, diff) => {
   const startArray = new Array(length).fill(start);
   return startArray.map((val, idx) => (val + idx * diff));
 };
+const hideElement = (progression, position) => {
+  const toQuestion = (val, idx) => (idx === position ? '..' : val);
+  return progression.map(toQuestion);
+};
 
-const getGameRound = (getRandomInt) => {
-  const start = getRandomInt(MIN.START, MAX.START);
-  const length = getRandomInt(MIN.LENGTH, MAX.LENGTH);
-  const diff = getRandomInt(MIN.DIFF, MAX.DIFF);
-  const position = getRandomInt(0, length);
+const getRound = (generateRandomInt) => {
+  const start = generateRandomInt(MIN.START, MAX.START);
+  const length = generateRandomInt(MIN.LENGTH, MAX.LENGTH);
+  const diff = generateRandomInt(MIN.DIFF, MAX.DIFF);
   const progression = getProgression(start, length, diff);
-  const correct = progression[position].toString();
-  const changeForQuestion = (val, idx) => (idx === position ? '..' : val);
-  const question = progression.map(changeForQuestion).join(' ');
-  return [question, correct];
+  const position = generateRandomInt(0, length);
+  const answer = progression[position].toString();
+  const question = hideElement(progression, position).join(' ');
+  return [question, answer];
 };
 
 export default {
   title: 'What number is missing in the progression?',
-  getGameRound,
+  getRound,
 };

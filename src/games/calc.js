@@ -6,18 +6,18 @@ const operations = {
   '*': (a, b) => a * b,
 };
 
-const getGameRound = (getRandomInt) => {
-  const first = getRandomInt(MIN_NUMBER, MAX_NUMBER);
-  const second = getRandomInt(MIN_NUMBER, MAX_NUMBER);
+const getRound = (generateRandomInt) => {
+  const first = generateRandomInt(MIN_NUMBER, MAX_NUMBER);
+  const second = generateRandomInt(MIN_NUMBER, MAX_NUMBER);
   const tokens = Object.keys(operations);
-  const tokenPosition = getRandomInt(0, tokens.length);
-  const token = tokens[tokenPosition];
+  const position = generateRandomInt(0, tokens.length);
+  const token = tokens[position];
   const question = `${first} ${token} ${second}`;
-  const correct = operations[token](first, second).toString();
-  return [question, correct];
+  const answer = operations[token](first, second).toString();
+  return [question, answer];
 };
 
 export default {
   title: 'What is the result of the expression?',
-  getGameRound,
+  getRound,
 };

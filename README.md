@@ -53,8 +53,10 @@ brain-prime
 import runGame from '@hexlet/code';
 import evenGame from '@hexlet/code/games/even.js';
 
-// You need to specify async getAnswerByUser function,
+// You have to specify getUserAnswer function,
 // that should return answer by user
-runGame(evenGame, userName, getAnswerByUser);
+// Also, you have to specify the output function
+// to display messages from game engine
+runGame(evenGame, userName, getUserAnswer, output);
 
 ```

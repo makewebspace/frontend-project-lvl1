@@ -7,13 +7,13 @@ const isPrime = (number) => {
   return number > 1;
 };
 
-const getGameRound = (getRandomInt) => {
-  const question = getRandomInt(MIN_NUMBER, MAX_NUMBER);
-  const correct = isPrime(question) ? 'yes' : 'no';
-  return [question, correct];
+const getRound = (generateRandomInt) => {
+  const question = generateRandomInt(MIN_NUMBER, MAX_NUMBER);
+  const answer = isPrime(question) ? 'yes' : 'no';
+  return [question, answer];
 };
 
 export default {
   title: 'Answer "yes" if given number is prime. Otherwise answer "no".',
-  getGameRound,
+  getRound,
 };
