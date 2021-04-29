@@ -2,15 +2,20 @@ import { generateRandomInt } from './helpers.js';
 
 const ROUNDS_COUNT = 3;
 
-export default (game, userName, getUserAnswer, output) => {
-  output(game.title);
+export default (game, input, output) => {
+  output('Welcome to the Brain Games!');
+
+  const userName = input('May I have your name? ');
+
+  output(`Hello, ${userName}!`);
+  output(game.description);
 
   for (let i = 0; i < ROUNDS_COUNT; i += 1) {
-    const [question, answer] = game.getRound(generateRandomInt);
+    const [question, answer] = game.generateRound(generateRandomInt);
 
     output(`Question: ${question}`);
 
-    const userAnswer = getUserAnswer();
+    const userAnswer = input('Your answer: ');
 
     if (userAnswer !== answer) {
       output(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.`);
