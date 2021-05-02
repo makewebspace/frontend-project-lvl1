@@ -50,13 +50,13 @@ brain-prime
 
 ## Usage on your code
 ```javascript
-import runGame from '@hexlet/code';
+import start from '@hexlet/code';
 import evenGame from '@hexlet/code/games/even.js';
 
-// You have to specify getUserAnswer function,
-// that should return answer by user
+// You have to specify input function
+// to input users data to game engine
 // Also, you have to specify the output function
 // to display messages from game engine
-runGame(evenGame, userName, getUserAnswer, output);
+start(evenGame, input, output);
 
 ```
