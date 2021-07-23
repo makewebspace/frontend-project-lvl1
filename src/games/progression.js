@@ -9,15 +9,9 @@ const MAX = {
   DIFF: 10,
 };
 
-const getProgression = (start, length, step) => {
-  const startArray = new Array(length).fill(start);
-  return startArray.map((val, idx) => (val + idx * step));
-};
-
-const hideElement = (progression, position) => {
-  const toQuestion = (val, idx) => (idx === position ? '..' : val);
-  return progression.map(toQuestion);
-};
+const getProgression = (start, length, step) => new Array(length)
+  .fill(start)
+  .map((val, idx) => (val + idx * step));
 
 const generateRound = (generateRandomInt) => {
   const start = generateRandomInt(MIN.START, MAX.START);
@@ -25,8 +19,8 @@ const generateRound = (generateRandomInt) => {
   const step = generateRandomInt(MIN.DIFF, MAX.DIFF);
   const progression = getProgression(start, length, step);
   const position = generateRandomInt(0, length);
-  const answer = progression[position].toString();
-  const question = hideElement(progression, position).join(' ');
+  const answer = progression.splice(position, 1, '..').toString();
+  const question = progression.join(' ');
   return [question, answer];
 };
 
