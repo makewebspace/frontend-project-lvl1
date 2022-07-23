@@ -3,8 +3,8 @@ const MAX_NUMBER = 100;
 
 const isEven = (number) => number % 2 === 0;
 
-const generateRound = (generateRandomInt) => {
-  const question = generateRandomInt(MIN_NUMBER, MAX_NUMBER);
+const generateRound = (generateNumber) => {
+  const question = generateNumber(MIN_NUMBER, MAX_NUMBER);
   const answer = isEven(question) ? 'yes' : 'no';
   return [question, answer];
 };

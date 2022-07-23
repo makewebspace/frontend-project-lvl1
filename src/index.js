@@ -1,4 +1,4 @@
-import { generateRandomInt } from './helpers.js';
+import { generateNumber } from './helpers.js';
 
 const ROUNDS_COUNT = 3;
 
@@ -11,7 +11,7 @@ export default (game, input, output) => {
   output(game.description);
 
   for (let i = 0; i < ROUNDS_COUNT; i += 1) {
-    const [question, answer] = game.generateRound(generateRandomInt);
+    const [question, answer] = game.generateRound(generateNumber);
 
     output(`Question: ${question}`);
 

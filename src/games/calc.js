@@ -7,11 +7,11 @@ const operations = {
   '*': (a, b) => a * b,
 };
 
-const generateRound = (generateRandomInt) => {
-  const leftOperand = generateRandomInt(MIN_NUMBER, MAX_NUMBER);
-  const rightOperand = generateRandomInt(MIN_NUMBER, MAX_NUMBER);
+const generateRound = (generateNumber) => {
+  const leftOperand = generateNumber(MIN_NUMBER, MAX_NUMBER);
+  const rightOperand = generateNumber(MIN_NUMBER, MAX_NUMBER);
   const operands = Object.keys(operations);
-  const position = generateRandomInt(0, operands.length);
+  const position = generateNumber(0, operands.length);
   const operand = operands[position];
   const question = `${leftOperand} ${operand} ${rightOperand}`;
   const answer = operations[operand](leftOperand, rightOperand).toString();

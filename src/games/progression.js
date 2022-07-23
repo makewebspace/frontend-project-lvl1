@@ -13,12 +13,12 @@ const getProgression = (start, length, step) => new Array(length)
   .fill(start)
   .map((val, idx) => (val + idx * step));
 
-const generateRound = (generateRandomInt) => {
-  const start = generateRandomInt(MIN.START, MAX.START);
-  const length = generateRandomInt(MIN.LENGTH, MAX.LENGTH);
-  const step = generateRandomInt(MIN.DIFF, MAX.DIFF);
+const generateRound = (generateNumber) => {
+  const start = generateNumber(MIN.START, MAX.START);
+  const length = generateNumber(MIN.LENGTH, MAX.LENGTH);
+  const step = generateNumber(MIN.DIFF, MAX.DIFF);
   const progression = getProgression(start, length, step);
-  const position = generateRandomInt(0, length);
+  const position = generateNumber(0, length);
   const answer = progression.splice(position, 1, '..').toString();
   const question = progression.join(' ');
   return [question, answer];

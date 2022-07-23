@@ -8,8 +8,8 @@ const isPrime = (number) => {
   return number > 1;
 };
 
-const generateRound = (generateRandomInt) => {
-  const question = generateRandomInt(MIN_NUMBER, MAX_NUMBER);
+const generateRound = (generateNumber) => {
+  const question = generateNumber(MIN_NUMBER, MAX_NUMBER);
   const answer = isPrime(question) ? 'yes' : 'no';
   return [question, answer];
 };
